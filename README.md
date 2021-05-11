@@ -3,7 +3,7 @@
 
 <img alt="Unreal Engine" src="https://shields.io/badge/UnrealEngine-v4.26-blue"/>
 
-OZ Boost is a Unreal Engine 4 Plugin to create a unique Pod experience. 
+OZ Boost is an Unreal Engine 4 Plugin to create a unique Pod experience. 
 
 ## Dependencies
 OZ Boost depends on few Unreal Engine plugins:
