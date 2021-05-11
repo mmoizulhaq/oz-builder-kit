@@ -7,7 +7,7 @@ OZ Boost is a Unreal Engine 4 Plugin to create a unique Pod experience.
 
 ## Installation
 
-Unzip the package into the Plugin directory of UE4.
+Unzip the package into the Plugin directory of your UE4 project.
 
 ## Example
 
