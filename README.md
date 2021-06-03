@@ -324,13 +324,12 @@ The following is a complete list of the IDs of currently available animations:
 ##  9. <a name='ImportantAdditionalInformation'></a>Important Additional Information
 
 In case you received an error saying that one of the plugins was built with a different version of the editor, refer to the following instructions:
->
-> * Create a new blank project with C++ instead of Blueprints. Close the project. In the > project’s folder, create a folder called Plugins. 
->
-> * Paste the plugin mentioned in the error message into this folder. Go back to the project folder itself and reopen the project. You will now receive a message saying that the plugin was built with a different version asking if you’d like to rebuild it. Select yes.
->
-> * When this process has finished, close this project. Now, copy the plugin itself and paste it back into Engine/Plugins/Runtime. You can now delete the new project, re-open your project and continue according to the instructions above.
->
-> * Need to enable Show Engine Content, to see the OZ Plugiin.
 
+* Create a new blank project with C++ instead of Blueprints. Close the project. In the > project’s folder, create a folder called Plugins. 
+
+* Paste the plugin mentioned in the error message into this folder. Go back to the project folder itself and reopen the project. You will now receive a message saying that the plugin was built with a different version asking if you’d like to rebuild it. Select yes.
+
+* When this process has finished, close this project. Now, copy the plugin itself and paste it back into Engine/Plugins/Runtime. You can now delete the new project, re-open your project and continue according to the instructions above.
+
+* Need to enable Show Engine Content, to see the OZ Plugiin.
 
