@@ -19,7 +19,14 @@ OZ Boost is an Unreal Engine 4 Plugin to create a unique Pod experience.
 * 6. [Web Controller](#WebController)
 	* 6.1. [Handling custom events via web controller](#Handlingcustomeventsviawebcontroller)
 	* 6.2. [Interacting via the Web Controller](#InteractingviatheWebController)
-		* 6.2.1. [Commands](#Commands)
+	* 6.3. [WebController Commands](#WebControllerCommands)
+		* 6.3.1. [spawnavatar](#spawnavatar)
+		* 6.3.2. [animation](#animation)
+		* 6.3.3. [spawnpod](#spawnpod)
+		* 6.3.4. [destroypod](#destroypod)
+		* 6.3.5. [spawnpodmember](#spawnpodmember)
+		* 6.3.6. [destroypodmember](#destroypodmember)
+		* 6.3.7. [custom](#custom)
 * 7. [List of animations](#Listofanimations)
 * 8. [Known limitations](#Knownlimitations)
 * 9. [Important Additional Information](#ImportantAdditionalInformation)
@@ -189,10 +196,10 @@ While there are still empty ``AvatarPlaceholder`` capsules within the scene that
 
 Furthermore, if you want to control the animations of the spawned ``Web_Avatars``, the following command can be set in the ```ASCII``` field with the same settings as in the previous step: ``animation,andri,snake``  - Where ``animation`` represents the type of command, ``andri`` represents the ``ID`` of the ``WebAvatar`` that is supposed to change the animation, and ``snake`` is the ID of one of the available animations to play. 
 
-####  6.2.1. <a name='Commands'></a>Commands
+###  6.3. <a name='WebControllerCommands'></a>WebController Commands
 The Web Controller accepts the following commands
 
-##### **spawnavatar**
+####  6.3.1. <a name='spawnavatar'></a>spawnavatar
 Spawns an avatar in place of an AvatarPlaceholder > object in the level, which is not a member of a pod.
 
 *Arguments*
@@ -206,7 +213,7 @@ Spawns an avatar in place of an AvatarPlaceholder > object in the level, which i
 
 ***
 
-##### **animation**
+####  6.3.2. <a name='animation'></a>animation
 Runs an animation from the list of valid animations against a pod member.
 
 *Arguments*
@@ -219,7 +226,7 @@ Runs an animation from the list of valid animations against a pod member.
 
 ***
 
-##### *spawnpod*
+####  6.3.3. <a name='spawnpod'></a>spawnpod
 Loads a pod model from a glTF file.
 
 *Arguments*
@@ -231,7 +238,7 @@ Loads a pod model from a glTF file.
 
 ***
 
-##### **destroypod**
+####  6.3.4. <a name='destroypod'></a>destroypod
 
 Removes a pod from the scene, leaving its slot ready to load another one.
 
@@ -243,7 +250,7 @@ Removes a pod from the scene, leaving its slot ready to load another one.
 
 ***
 
-##### **spawnpodmember**
+####  6.3.5. <a name='spawnpodmember'></a>spawnpodmember
 
 Loads an avatar from a glTF file into a pod.
 
@@ -259,7 +266,7 @@ Loads an avatar from a glTF file into a pod.
 
 ***
 
-##### **destroypodmember**
+####  6.3.6. <a name='destroypodmember'></a>destroypodmember
 
 Removes a previously spawned avatar from a pod, leaving the slot open for a new member.
 
@@ -272,7 +279,7 @@ Removes a previously spawned avatar from a pod, leaving the slot open for a new 
 
 ***
 
-##### **custom**
+####  6.3.7. <a name='custom'></a>custom
 
 Passes a freeform event to the scene, which can be picked up from the Web Controller using an event dispatcher. 
 
