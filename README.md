@@ -192,80 +192,83 @@ Furthermore, if you want to control the animations of the spawned ``Web_Avatars`
 ####  6.2.1. <a name='Commands'></a>Commands
 The Web Controller accepts the following commands
 
-##### spawnavatar
-Spawns an avatar in place of an AvatarPlaceholder object in the level, which is not a member of a pod.
-
-*Arguments*
-
-Requires 1 argument, 1 optional argument.
-
+> ##### **spawnavatar**
+> Spawns an avatar in place of an AvatarPlaceholder > object in the level, which is not a member of a pod.
+>
+>*Arguments*
+>
+> **Requires: 1 argument**
+> 
+> **1 optional argument.**
+>
 > 1. **Avatar ID**.
-> 2. **Animation identifier** Check [list](#list-of-animations) for valid input. *(optional)*
+>  2. **Animation identifier** Check [list](#list-of-animations) for valid input. *(optional)*
 
-##### animation
-Runs an animation from the list of valid animations against a pod member.
-
-*Arguments*
-
-Requires 3 arguments.
-
+>##### **animation**
+>Runs an animation from the list of valid animations against a pod member.
+>
+>*Arguments*
+>
+>**Requires 3 arguments**
+>
 > 1. **Pod index in the scene**. where 0 is the first pod.
 > 2. **Location of pod member within pod** with 0 being the first on the left and 4 being the furthest to the right.  
 > 3. **Animation identifier**. refer to the list later in this chapter of supported animations. Check [list](#list-of-animations) for valid input.
 
-##### spawnpod
-Loads a pod model from a glTF file.
-
-*Arguments*
-
-Requires 2 arguments.
-
+>##### *spawnpod*
+> Loads a pod model from a glTF file.
+>
+>*Arguments*
+>
+>**Requires 2 arguments.**
+>
 > 1. **Pod index in the scene** where 0 is the first pod.
 > 2. **Full path file name for pod model**. Path includes the glb file extension. 
 
-##### destroypod
-
-Removes a pod from the scene, leaving its slot ready to load another one.
-
-*Arguments*
-
-Requires 1 argument.
-
+> ##### **destroypod**
+>
+>Removes a pod from the scene, leaving its slot ready to load another one.
+>
+>*Arguments*
+>
+**Requires 1 argument.**
+>
 > 1. **Index in the scene** from 0 and up.
 
-##### spawnpodmember
-
-Loads an avatar from a glTF file into a pod.
-
-*Arguments*
-
-Requires 3 arguments, has 1 optional argument.
-
+>##### **spawnpodmember**
+>
+>Loads an avatar from a glTF file into a pod.
+>
+>*Arguments*
+>
+>**Requires 3 arguments** 
+>**1 optional argument**
+>
 > 1. **Pod index**, where pod 0 is the first pod.
 > 2. **Location of the pod member** within the pod, with 0 being the first on the left and 4 being the furthest to the right.
 > 3. **Avatar identifier**.
 > 4. **Initial animation** *(optional)* Check [list](#list-of-animations) for valid input.
 
-##### destroypodmember
-
-Removes a previously spawned avatar from a pod, leaving the slot open for a new member.
-
-*Arguments*
-
-Requires 2 arguments
-
+>##### **destroypodmember**
+>
+>Removes a previously spawned avatar from a pod, leaving the slot open for a new member.
+>
+>*Arguments*
+>
+>**Requires 2 arguments**
+>
 > 1. **Pod index in the scene** where pod 0 is the first pod.
 > 2.  **Location of the pod member** within the pod, with 0 being the first on the left and 4 being the furthest to the right.
 
-##### custom
+>##### **custom**
+>
+>Passes a freeform event to the scene, which can be picked up from the Web Controller using an event dispatcher. 
 
-Passes a freeform event to the scene, which can be picked up from the Web Controller using an event dispatcher. 
-
-Refer to the previous chapter for information the blueprint implementation.
+>Refer to the previous chapter for information the blueprint implementation.
 
 *Arguments*
 
-Requires 1 argument which is passed to the event handler.
+**Requires 1 argument** which is passed to the event handler.
 
 ##  7. <a name='Listofanimations'></a>List of animations
 The following is a complete list of the IDs of currently available animations: 
