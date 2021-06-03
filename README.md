@@ -187,7 +187,7 @@ The ASCII field contains the actual command, which in this case is ```spawnavata
 
 While there are still empty ``AvatarPlaceholder`` capsules within the scene that do not belong to a pod, pressing ``Send`` will fill up the next available capsule. The capsules are filled in the order they were placed within the scene. If no empty capsules remain within the scene, pressing Send simply yields no result.
 
-Furthermore, if you want to control the animations of the spawned ``Web_Avatars``, the following command can be set in the ``ASCII`` field with the same settings as in the previous step: ``animation,andri,snake``  - Where ``animation`` represents the type of command, ``andri`` represents the ``ID`` of the ``WebAvatar`` that is supposed to change the animation, and ``snake`` is the ID of one of the available animations to play. 
+Furthermore, if you want to control the animations of the spawned ``Web_Avatars``, the following command can be set in the ``ASCII``field with the same settings as in the previous step: ``animation,andri,snake``  - Where ``animation`` represents the type of command, ``andri`` represents the ``ID`` of the ``WebAvatar`` that is supposed to change the animation, and ``snake`` is the ID of one of the available animations to play. 
 
 ####  6.2.1. <a name='Commands'></a>Commands
 The Web Controller accepts the following commands
