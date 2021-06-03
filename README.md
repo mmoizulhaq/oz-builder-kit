@@ -1,11 +1,36 @@
-
 # <img src="./ozlogo.png" height="60" width="120"> Boost
 
 <img alt="Unreal Engine" src="https://shields.io/badge/UnrealEngine-v4.26-blue"/>
 
 OZ Boost is an Unreal Engine 4 Plugin to create a unique Pod experience. 
 
-## Dependencies
+##  1. <a name='Content'></a>Content
+<!-- vscode-markdown-toc -->
+* 1. [Content](#Content)
+* 2. [Dependencies](#Dependencies)
+* 3. [Installation](#Installation)
+	* 3.1. [Dependencies](#Dependencies-1)
+	* 3.2. [OZ-Boost](#OZ-Boost)
+	* 3.3. [Adding models](#Addingmodels)
+* 4. [Example](#Example)
+* 5. [Feature Overview](#FeatureOverview)
+	* 5.1. [PodWithAvatars](#PodWithAvatars)
+	* 5.2. [AvatarPlaceholder](#AvatarPlaceholder)
+* 6. [Web Controller](#WebController)
+	* 6.1. [Handling custom events via web controller](#Handlingcustomeventsviawebcontroller)
+	* 6.2. [Interacting via the Web Controller](#InteractingviatheWebController)
+		* 6.2.1. [Commands](#Commands)
+* 7. [List of animations](#Listofanimations)
+* 8. [Known limitations](#Knownlimitations)
+* 9. [Important Additional Information](#ImportantAdditionalInformation)
+
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
+##  2. <a name='Dependencies'></a>Dependencies
 OZ Boost depends on few Unreal Engine plugins:
 
 -------------------
@@ -17,9 +42,9 @@ OZ Boost depends on few Unreal Engine plugins:
 |[socketio-client-ue4](https://github.com/getnamo/socketio-client-ue4)|v1.5.5
 
 
-## Installation
+##  3. <a name='Installation'></a>Installation
 
-### Dependencies
+###  3.1. <a name='Dependencies-1'></a>Dependencies
 
 * Copy the specified dependencies into the Plugins directory of your project, along with the OZFusion plugin.
 * Open your project. In some cases, an error saying that one of the plugins was built with a different version of the editor might appear. If this is the case, refer to [Important Additional Information](#important-additional-information)
@@ -43,11 +68,11 @@ OZ Boost depends on few Unreal Engine plugins:
   
 * The editor will now ask you to restart the engine. Do so.
 
-### OZ-Boost
+###  3.2. <a name='OZ-Boost'></a>OZ-Boost
 
 * In the ```Content Browser```, select ```View Options > Show Plugin Content```. Then, in the top left corner of the content browser, select the little menu icon. Now you should see a folder called OZFusion Content.
 
-### Adding models
+###  3.3. <a name='Addingmodels'></a>Adding models
 
 * All models are stored in ```Content/Models```. Any additional models can be placed there. Make sure to include both the ```_lod0.glb``` and ```_lod3.glb``` versions.
 
@@ -55,17 +80,17 @@ OZ Boost depends on few Unreal Engine plugins:
 
 
 
-## Example
+##  4. <a name='Example'></a>Example
 
 Checkout out the Example folder
 
-## Feature Overview
+##  5. <a name='FeatureOverview'></a>Feature Overview
 
 The plugin features two types of placeholder objects, ```PodWithAvatars``` which is a placeholder for a pod with space for up to 5 avatars, and ```AvatarPlaceholder``` which is a placeholder for an avatar that does not belong to a pod.
 
 There is also a communications controller that is required for live control of the scene when it is streaming to the OZ Pods app, ```BP_AvatarWebController```.
 
-### PodWithAvatars
+###  5.1. <a name='PodWithAvatars'></a>PodWithAvatars
 
 
 <figure>
@@ -103,7 +128,7 @@ The pod placeholder exposes a number of functions that can be called from the We
 * **Animate pod member** sets the animation of the pod member in a specified position.
 
 
-### AvatarPlaceholder
+###  5.2. <a name='AvatarPlaceholder'></a>AvatarPlaceholder
 
 
 <figure>
@@ -126,9 +151,9 @@ The avatar placeholder also exposes functions that can be called from blueprints
 * Destroy avatar
 * Animate
 
-## Web Controller
+##  6. <a name='WebController'></a>Web Controller
 
-### Handling custom events via web controller
+###  6.1. <a name='Handlingcustomeventsviawebcontroller'></a>Handling custom events via web controller
 
 <figure>
 <img alt="Specify a model and animation" src="./Doc/customevent.png"/>
@@ -137,7 +162,7 @@ The avatar placeholder also exposes functions that can be called from blueprints
 The web controller allows the creation of of custom events through an event dispatcher. To use this, instantiate the web controller in the level, and in the level blueprint create an event dispatcher connected to the web controller.
 
 
-### Interacting via the Web Controller
+###  6.2. <a name='InteractingviatheWebController'></a>Interacting via the Web Controller
 If a Web Controller actor is placed into the scene, the scene can be manipulated via the network.
 
 This process will be handled automatically on the computer running the live scene via the kafka-unreal-gateway, but if you want to try spawning a pod or pod member by yourself, you can download a program called [Packet Sender](https://packetsender.com/download#show). 
@@ -164,7 +189,7 @@ While there are still empty ``AvatarPlaceholder`` capsules within the scene that
 
 Furthermore, if you want to control the animations of the spawned ``Web_Avatars``, the following command can be set in the ``ASCII`` field with the same settings as in the previous step: ``animation,andri,snake``  - Where ``animation`` represents the type of command, ``andri`` represents the ``ID`` of the ``WebAvatar`` that is supposed to change the animation, and ``snake`` is the ID of one of the available animations to play. 
 
-#### Commands
+####  6.2.1. <a name='Commands'></a>Commands
 The Web Controller accepts the following commands
 
 ##### spawnavatar
@@ -242,7 +267,7 @@ Refer to the previous chapter for information the blueprint implementation.
 
 Requires 1 argument which is passed to the event handler.
 
-## List of animations
+##  7. <a name='Listofanimations'></a>List of animations
 The following is a complete list of the IDs of currently available animations: 
 
 * hip_hop
@@ -268,13 +293,13 @@ The following is a complete list of the IDs of currently available animations:
 * side_to_side
 * idle
 
-## Known limitations
+##  8. <a name='Knownlimitations'></a>Known limitations
 
 * There seems to be incompatibility with some plugins, like the Megascan. As it now causes errors on compiling C++ plugin with the Megascan feature enabled.
 
 * Make sure you have the .Net ‘Developer’ version installed on the latest Visual Studio. .
 
-## Important Additional Information
+##  9. <a name='ImportantAdditionalInformation'></a>Important Additional Information
 
 In case you received an error saying that one of the plugins was built with a different version of the editor, refer to the following instructions:
 >
