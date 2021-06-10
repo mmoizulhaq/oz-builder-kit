@@ -1,0 +1,15 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "OZ-Boost",
+	"Description": "",
+	"Category": "Other",
+	"CreatedBy": "OZ",
+	"CreatedByURL": "https://www.oz.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"Installed": true
+}
