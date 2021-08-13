@@ -102,6 +102,13 @@ There is also a communications controller that is required for live control of t
 </figure>
 
 To load an avatar into the scene, drag AvatarPlaceholder from the content browser into the map.
+The placeholder can then be given a set of tags.
+The role tag gives an avatar a specific role in the environment.
+* ``role:host`` - Only one avatar can be a host
+* ``role:cohost``
+* ``role:guest`` - Guests are not spawned but rather promoted from the rows of audience
+* ``role:audience``
+These role tags are mutually exclusive.
 
 To specify a model and animation use the options presented in the details browser, but this should only be done for testing purposes, in production the models are all loaded under control of the web controller.
 
