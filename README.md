@@ -197,7 +197,7 @@ Removes a spawned avatar from the scene, leaving the slot free for another avata
 ***
 
 
-####  6.3.3. <a name='custom'></a>custom
+####  6.3.4. <a name='custom'></a>custom
 
 Passes a freeform event to the scene, which can be picked up from the Web Controller using an event dispatcher. 
 
