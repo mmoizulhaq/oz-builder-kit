@@ -93,49 +93,12 @@ Checkout out the Example folder
 
 ##  5. <a name='FeatureOverview'></a>Feature Overview
 
-The plugin features two types of placeholder objects, ```PodWithAvatars```, a placeholder for a pod with space for up to 5 avatars, and ```AvatarPlaceholder``` which is a placeholder for an avatar that does not belong to a pod.
+The plugin features one type of placeholder object, ```AvatarPlaceholder``` which is a placeholder for an avatar to be populated by an actual avatar during run time.
 
 There is also a communications controller that is required for live control of the scene when it is streaming to the OZ Pods app, ```BP_AvatarWebController```.
 
-###  5.1. <a name='PodWithAvatars'></a>PodWithAvatars
 
-
-<figure>
-<img alt="Avatar" src="./Doc/avatar.png"/>
-</figure>
-
-To load a pod into the scene, simply drag the PodWithAvatars object from the content browser into the level. A few configurations can be made from the Details browser:
-
-<figure>
-<img alt="Load scene" src="./Doc/loadscene.png"/>
-</figure>
-
-
-* **Initial Filename** specifies the full path to a glTF file loaded as the pod model when the scene starts. It is only necessary to define this if the Web Controller is not loading the pod model.
- 
-* **Initial population** specifies a list of avatar files to be loaded when the scene starts up. The name of an animation sequence may be included with a comma separating the name of the model from the animation's name.
-
-* ** High-resolution members** specifies that the models loaded into this pod should be the high-resolution variant. The high-resolution variant is saved with a file name suffix _lod0.glb, otherwise the file name is suffixed by _lod3.glb
-
-> **Note:** The higher resolution models choose randomly from a list of six facial animations, while the lower resolution models don't include facial animations.
-
-The pod placeholder exposes several functions that can be called from the Web Controller or from Blueprint, or via the sequencer.
-
-* **Spawn pod** accepts a full path file name argument and loads a pod from the file.
-
-* **Destroy pod** removes a previously spawned pod from the scene.
-
-* **Spawn pod member** loads an avatar into the pod and takes three arguments:
-  * *  Filename of avatar model, without lod suffix
-  * * Slot (position, where 0 is the leftmost and 4 is the rightmost)
-  * * Animation *(optional)*
-  
-* **Destroy pod member** removes an avatar from the pod, with an argument specifying the position.
-
-* **Animate pod member** sets the animation of the pod member in a specified position.
-
-
-###  5.2. <a name='AvatarPlaceholder'></a>AvatarPlaceholder
+###  5.1. <a name='AvatarPlaceholder'></a>AvatarPlaceholder
 
 
 <figure>
@@ -204,12 +167,12 @@ Spawns an avatar in place of an AvatarPlaceholder > object in the level, which i
 
 *Arguments*
 
-**Requires: 1 argument**
+**Requires: 2 arguments**
  
 **1 optional argument.**
-
-1. **Avatar ID**.
-2. **Animation identifier** Check [list](#list-of-animations) for valid input. *(optional)*
+1. **Avatar index** with 0 being the first slot populated by a placeholder.
+2. **Avatar ID**.
+3. **Animation identifier** Check [list](#list-of-animations) for valid input. *(optional)*
 
 ***
 
@@ -218,68 +181,14 @@ Runs an animation from the list of valid animations against a pod member.
 
 *Arguments*
 
-**Requires 3 arguments**
+**Requires 2 arguments**
 
-1. **Pod index in the scene** where 0 is the first pod.
-2. **Location of pod member within pod** with 0 being the first on the left and 4 being the furthest to the right.  
+2. **Avatar index** with 0 being the first.  
 3. **Animation identifier**. refer to the list later in this chapter of supported animations. Check [list](#list-of-animations) for valid input.
 
 ***
 
-####  6.3.3. <a name='spawnpod'></a>spawnpod
-Loads a pod model from a glTF file.
-
-*Arguments*
-
-**Requires 2 arguments.**
-
-1. **Pod index in the scene** where 0 is the first pod.
-2. **Full path file name for pod model**. Path includes the glb file extension. 
-
-***
-
-####  6.3.4. <a name='destroypod'></a>destroypod
-
-Removes a pod from the scene, leaving its slot ready to load another one.
-
-*Arguments*
-
-**Requires 1 argument.**
-
-1. **Index in the scene** from 0 and up.
-
-***
-
-####  6.3.5. <a name='spawnpodmember'></a>spawnpodmember
-
-Loads an avatar from a glTF file into a pod.
-
-*Arguments*
-
-**Requires 3 arguments** 
-**1 optional argument**
-
-1. **Pod index**, where pod 0 is the first pod.
-2. **Location of the pod member** within the pod, with 0 being the first on the left and 4 being the furthest to the right.
-3. **Avatar identifier**.
-4. **Initial animation** *(optional)* Check [list](#list-of-animations) for valid input.
-
-***
-
-####  6.3.6. <a name='destroypodmember'></a>destroypodmember
-
-Removes a previously spawned avatar from a pod, leaving the slot open for a new member.
-
-*Arguments*
-
-**Requires 2 arguments**
-
-1. **Pod index in the scene** where pod 0 is the first pod.
-2.  **Location of the pod member** within the pod, with 0 being the first on the left and 4 being the furthest to the right.
-
-***
-
-####  6.3.7. <a name='custom'></a>custom
+####  6.3.3. <a name='custom'></a>custom
 
 Passes a freeform event to the scene, which can be picked up from the Web Controller using an event dispatcher. 
 
@@ -314,6 +223,16 @@ The following is a complete list of the IDs of currently available animations:
 * raise_the_roof
 * side_to_side
 * idle
+* winner
+* loser
+* floating
+* participant
+* goodbye
+* host_scene
+* cohost_scene
+* participant
+* selection1
+* selection2
 
 ##  8. <a name='Knownlimitations'></a>Known limitations
 
