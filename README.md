@@ -2,7 +2,7 @@
 
 <img alt="Unreal Engine" src="https://shields.io/badge/UnrealEngine-v4.26-blue"/>
 
-OZ Boost is an Unreal Engine 4 Plugin to create a unique Pod experience. 
+OZ Boost is an Unreal Engine 4 Plugin to create an interactive experience.
 
 ##  1. <a name='Content'></a>Content
 <!-- vscode-markdown-toc -->
@@ -14,19 +14,15 @@ OZ Boost is an Unreal Engine 4 Plugin to create a unique Pod experience.
     * 3.3. [Adding models](#Addingmodels)
 * 4. [Example](#Example)
 * 5. [Feature Overview](#FeatureOverview)
-    * 5.1. [PodWithAvatars](#PodWithAvatars)
-    * 5.2. [AvatarPlaceholder](#AvatarPlaceholder)
+    * 5.1. [AvatarPlaceholder](#AvatarPlaceholder)
 * 6. [Web Controller](#WebController)
     * 6.1. [Handling custom events via web controller](#Handlingcustomeventsviawebcontroller)
     * 6.2. [Interacting via the Web Controller](#InteractingviatheWebController)
     * 6.3. [WebController Commands](#WebControllerCommands)
         * 6.3.1. [spawnavatar](#spawnavatar)
         * 6.3.2. [animation](#animation)
-        * 6.3.3. [spawnpod](#spawnpod)
-        * 6.3.4. [destroypod](#destroypod)
-        * 6.3.5. [spawnpodmember](#spawnpodmember)
-        * 6.3.6. [destroypodmember](#destroypodmember)
-        * 6.3.7. [custom](#custom)
+        * 6.3.3. [destroyavatar](#destroyavatar)
+        * 6.3.4. [custom](#custom)
 * 7. [List of animations](#Listofanimations)
 * 8. [Known limitations](#Knownlimitations)
 * 9. [Important Additional Information](#ImportantAdditionalInformation)
@@ -95,7 +91,7 @@ Checkout out the Example folder
 
 The plugin features one type of placeholder object, ```AvatarPlaceholder``` which is a placeholder for an avatar to be populated by an actual avatar during run time.
 
-There is also a communications controller that is required for live control of the scene when it is streaming to the OZ Pods app, ```BP_AvatarWebController```.
+There is also a communications controller that is required for live control of the scene when it is streaming to the OZ app, ```BP_AvatarWebController```.
 
 
 ###  5.1. <a name='AvatarPlaceholder'></a>AvatarPlaceholder
@@ -105,9 +101,9 @@ There is also a communications controller that is required for live control of t
 <img alt="Placeholder" src="./Doc/placeholder.png"/>
 </figure>
 
-To load an avatar into the scene that is not a pod member, drag AvatarPlaceholder from the content browser into the map.
+To load an avatar into the scene, drag AvatarPlaceholder from the content browser into the map.
 
-To specify a model and animation use the options presented in the details browser:
+To specify a model and animation use the options presented in the details browser, but this should only be done for testing purposes, in production the models are all loaded under control of the web controller.
 
 
 <figure>
@@ -135,7 +131,7 @@ The web controller allows the creation of custom events through an event dispatc
 ###  6.2. <a name='InteractingviatheWebController'></a>Interacting via the Web Controller
 If a Web Controller actor is placed into the scene, the scene can be manipulated via the network.
 
-This process will be handled automatically on the computer running the live scene via the Kafka-unreal-gateway. Still, if you want to try spawning a pod or pod member by yourself, you can download a program called [Packet Sender](https://packetsender.com/download#show). 
+This process will be handled automatically on the computer running the live scene via the Kafka-unreal-gateway. Still, if you want to try spawning an avatar by yourself, you can download a program called [Packet Sender](https://packetsender.com/download#show). 
 The Web Controller takes commands in the form of a string sent via UDP, with commas separating the command and each of the arguments it accepts.
 
 Then, while the program is running press ``Send`` with the configurations shown in the image:
@@ -153,40 +149,53 @@ Then, while the program is running press ``Send`` with the configurations shown 
 
 Don’t worry about the ``HEX`` field as that is filled in automatically.
 
-The ASCII field contains the actual command, which in this case is ```spawnavatar,gudjon``` - where ```spawnavatar``` represents the type of command and ``gudjon`` is the ID of the avatar that is to be spawned and is the same as when using the ``Filename `` field for ``Avatar``, and so to spawn a different avatar, change the ID to another one. Of course, the file still needs to exist within ``Plugins/OZFusion/Contents/Models/``.
+The ASCII field contains the actual command, which in this case is ```spawnavatar,audience,0,gudjon``` - where ```spawnavatar``` represents the type of command, audience represents the avatar role, 0 represents the first slot and ``gudjon`` is the ID of the avatar that is to be spawned and is the same as when using the ``Filename`` field for ``Avatar``, and so to spawn a different avatar, change the ID to another one. Of course, the file still needs to exist within ``Content/Models/``.
 
-While there are still empty ``AvatarPlaceholder`` capsules within the scene that do not belong to a pod, pressing ``Send`` will fill up the next available capsule. The capsules are filled in the order they were placed within the scene. If no empty capsules remain within the scene, pressing Send yields no result.
-
-Furthermore, if you want to control the animations of the spawned ``Web_Avatars``, the following command can be set in the ```ASCII``` field with the same settings as in the previous step: ``animation,andri,snake``  - Where ``animation`` represents the type of command, ``andri`` represents the ``ID`` of the ``WebAvatar`` that is supposed to change the animation, and ``snake`` is the ID of one of the available animations to play. 
+Furthermore, if you want to control the animations of the spawned ``Web_Avatars``, the following command can be set in the ```ASCII``` field with the same settings as in the previous step: ``animation,host,0,snake``  - Where ``animation`` represents the type of command, ``host`` represents the role, ``0`` represents the first slot associated with the given role, and ``snake`` is the ID of one of the available animations to play. 
 
 ###  6.3. <a name='WebControllerCommands'></a>WebController Commands
 The Web Controller accepts the following commands
 
 ####  6.3.1. <a name='spawnavatar'></a>spawnavatar
-Spawns an avatar in place of an AvatarPlaceholder > object in the level, which is not a member of a pod.
+Spawns an avatar in place of an AvatarPlaceholder > object in the level.
 
 *Arguments*
 
-**Requires: 2 arguments**
+**Requires: 3 arguments**
  
 **1 optional argument.**
-1. **Avatar index** with 0 being the first slot populated by a placeholder.
-2. **Avatar ID**.
-3. **Animation identifier** Check [list](#list-of-animations) for valid input. *(optional)*
+1. **Role** with valid roles being any of ``host``, ``cohost`` or ``audience``
+2. **Avatar index** with 0 being the first slot of the particular role populated by a placeholder.
+3. **Avatar ID**.
+4. **Animation identifier** Check [list](#list-of-animations) for valid input. *(optional)*
 
 ***
 
 ####  6.3.2. <a name='animation'></a>animation
-Runs an animation from the list of valid animations against a pod member.
+Runs an animation from the list of valid animation on an already spawned avatar.
+
+*Arguments*
+
+**Requires 3 arguments**
+
+1. **Role** with valid roles being any of ``host``, ``cohost`` or ``audience``
+2. **Avatar index** with 0 being the first slot of the particular role populated by a placeholder.
+3. **Animation identifier**. refer to the list later in this chapter of supported animations. Check [list](#list-of-animations) for valid input.
+
+***
+
+####  6.3.3. <a name='destroyavatar'></a>destroytavatar
+Removes a spawned avatar from the scene, leaving the slot free for another avatar to join in its place.
 
 *Arguments*
 
 **Requires 2 arguments**
 
-2. **Avatar index** with 0 being the first.  
-3. **Animation identifier**. refer to the list later in this chapter of supported animations. Check [list](#list-of-animations) for valid input.
+1. **Role** with valid roles being any of ``host``, ``cohost`` or ``audience``
+2. **Avatar index** with 0 being the first slot of the particular role populated by a placeholder.
 
 ***
+
 
 ####  6.3.3. <a name='custom'></a>custom
 
@@ -233,6 +242,10 @@ The following is a complete list of the IDs of currently available animations:
 * participant
 * selection1
 * selection2
+* shaking_head
+* shrugging
+* talking
+* thumbs_up
 
 ##  8. <a name='Knownlimitations'></a>Known limitations
 
