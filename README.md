@@ -1,8 +1,8 @@
-# <img src="./ozlogo.png" height="60" width="120"> Boost
+# <img src="./ozlogo.png" height="60" width="120"> Builder Kit
 
 <img alt="Unreal Engine" src="https://shields.io/badge/UnrealEngine-v4.26-blue"/>
 
-OZ Boost is an Unreal Engine 4 Plugin to create an interactive experience.
+The OZ Builder Kit is an Unreal Engine 4 Plugin to create interactive experiences for creators and communities. 
 
 ##  1. <a name='Content'></a>Content
 <!-- vscode-markdown-toc -->
@@ -10,7 +10,7 @@ OZ Boost is an Unreal Engine 4 Plugin to create an interactive experience.
 * 2. [Dependencies](#Dependencies)
 * 3. [Installation](#Installation)
     * 3.1. [Dependencies](#Dependencies-1)
-    * 3.2. [OZ-Boost](#OZ-Boost)
+    * 3.2. [OZ Plugin](#OZ-plugin)
     * 3.3. [Adding models](#Addingmodels)
 * 4. [Example](#Example)
 * 5. [Feature Overview](#FeatureOverview)
@@ -34,7 +34,7 @@ OZ Boost is an Unreal Engine 4 Plugin to create an interactive experience.
 <!-- /vscode-markdown-toc -->
 
 ##  2. <a name='Dependencies'></a>Dependencies
-OZ Boost depends on few Unreal Engine plugins:
+The creation of an OZ interactive experience depends on a few Unreal Engine plugins:
 
 -------------------
 |name|tested version|
@@ -49,7 +49,7 @@ OZ Boost depends on few Unreal Engine plugins:
 
 ###  3.1. <a name='Dependencies-1'></a>Dependencies
 
-* Copy the specified dependencies into the Plugins directory of your project, along with the OZFusion plugin.
+* Copy the specified dependencies into the Plugins directory of your project, along with the OZ Plugin.
 * Open your project. In some cases, an error saying that one of your plugins was built with a different version of the editor might appear. If this is the case, refer to [Important Additional Information](#important-additional-information)
 * In the top left corner, go into ``Edit > Plugins``. 
 
@@ -71,7 +71,7 @@ OZ Boost depends on few Unreal Engine plugins:
   
 * The editor will now ask you to restart the engine. Do so.
 
-###  3.2. <a name='OZ-Boost'></a>OZ-Boost
+###  3.2. <a name='OZ-Plugin'></a>OZ-Plugin
 
 * In the ```Content Browser```, select ```View Options > Show Plugin Content```. Then, in the top left corner of the content browser, select the little menu icon. Now you should see a folder called OZFusion Content.
 
