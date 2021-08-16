@@ -174,7 +174,7 @@ Spawns an avatar in place of an AvatarPlaceholder > object in the level.
 1. **Role** with valid roles being any of ``host``, ``cohost`` or ``audience``
 2. **Avatar index** with 0 being the first slot of the particular role populated by a placeholder.
 3. **Avatar ID**.
-4. **Animation identifier** Check [list](#list-of-animations) for valid input. *(optional)*
+4. **Animation identifier** Check list of animations below for valid input. *(optional)*
 
 ***
 
@@ -187,7 +187,7 @@ Runs an animation from the list of valid animation on an already spawned avatar.
 
 1. **Role** with valid roles being any of ``host``, ``cohost`` or ``audience``
 2. **Avatar index** with 0 being the first slot of the particular role populated by a placeholder.
-3. **Animation identifier**. refer to the list later in this chapter of supported animations. Check [list](#list-of-animations) for valid input.
+3. **Animation identifier**. refer to the list later in this chapter of supported animations. Check list of animations below for valid input.
 
 ***
 
@@ -258,7 +258,7 @@ The following is a complete list of the IDs of currently available animations:
 
 * There seems to be an incompatibility with some plugins, like the Megascan. As it now causes errors on compiling C++ plugin with the Megascan feature enabled.
 
-* Make sure you have the .Net ‘Developer’ version installed on the latest Visual Studio. .
+* Make sure you have the .Net ‘Developer’ version installed on the latest Visual Studio.
 
 ##  9. <a name='ImportantAdditionalInformation'></a>Important Additional Information
 
