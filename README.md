@@ -1,8 +1,8 @@
-# <img src="./ozlogo.png" height="60" width="120"> Boost
+# <img src="./ozlogo.png" height="60" width="120"> Builder Kit
 
 <img alt="Unreal Engine" src="https://shields.io/badge/UnrealEngine-v4.26-blue"/>
 
-OZ Boost is an Unreal Engine 4 Plugin to create an interactive experience.
+The OZ Builder Kit is an Unreal Engine 4 Plugin to create interactive experiences for creators and communities. 
 
 ##  1. <a name='Content'></a>Content
 <!-- vscode-markdown-toc -->
@@ -10,7 +10,7 @@ OZ Boost is an Unreal Engine 4 Plugin to create an interactive experience.
 * 2. [Dependencies](#Dependencies)
 * 3. [Installation](#Installation)
     * 3.1. [Dependencies](#Dependencies-1)
-    * 3.2. [OZ-Boost](#OZ-Boost)
+    * 3.2. [OZ Plugin](#OZ-plugin)
     * 3.3. [Adding models](#Addingmodels)
 * 4. [Example](#Example)
 * 5. [Feature Overview](#FeatureOverview)
@@ -34,7 +34,7 @@ OZ Boost is an Unreal Engine 4 Plugin to create an interactive experience.
 <!-- /vscode-markdown-toc -->
 
 ##  2. <a name='Dependencies'></a>Dependencies
-OZ Boost depends on few Unreal Engine plugins:
+The creation of an OZ interactive experience depends on a few Unreal Engine plugins:
 
 -------------------
 |name|tested version|
@@ -49,7 +49,7 @@ OZ Boost depends on few Unreal Engine plugins:
 
 ###  3.1. <a name='Dependencies-1'></a>Dependencies
 
-* Copy the specified dependencies into the Plugins directory of your project, along with the OZFusion plugin.
+* Copy the specified dependencies into the Plugins directory of your project, along with the OZ Plugin.
 * Open your project. In some cases, an error saying that one of your plugins was built with a different version of the editor might appear. If this is the case, refer to [Important Additional Information](#important-additional-information)
 * In the top left corner, go into ``Edit > Plugins``. 
 
@@ -71,7 +71,7 @@ OZ Boost depends on few Unreal Engine plugins:
   
 * The editor will now ask you to restart the engine. Do so.
 
-###  3.2. <a name='OZ-Boost'></a>OZ-Boost
+###  3.2. <a name='OZ-Plugin'></a>OZ-Plugin
 
 * In the ```Content Browser```, select ```View Options > Show Plugin Content```. Then, in the top left corner of the content browser, select the little menu icon. Now you should see a folder called OZFusion Content.
 
@@ -102,6 +102,13 @@ There is also a communications controller that is required for live control of t
 </figure>
 
 To load an avatar into the scene, drag AvatarPlaceholder from the content browser into the map.
+The placeholder can then be given a set of tags.
+The role tag gives an avatar a specific role in the environment.
+* ``role:host`` - Only one avatar can be a host
+* ``role:cohost``
+* ``role:guest`` - Guests are not spawned but rather promoted from the rows of audience
+* ``role:audience``
+These role tags are mutually exclusive.
 
 To specify a model and animation use the options presented in the details browser, but this should only be done for testing purposes, in production the models are all loaded under control of the web controller.
 
@@ -167,7 +174,7 @@ Spawns an avatar in place of an AvatarPlaceholder > object in the level.
 1. **Role** with valid roles being any of ``host``, ``cohost`` or ``audience``
 2. **Avatar index** with 0 being the first slot of the particular role populated by a placeholder.
 3. **Avatar ID**.
-4. **Animation identifier** Check [list](#list-of-animations) for valid input. *(optional)*
+4. **Animation identifier** Check list of animations below for valid input. *(optional)*
 
 ***
 
@@ -180,7 +187,7 @@ Runs an animation from the list of valid animation on an already spawned avatar.
 
 1. **Role** with valid roles being any of ``host``, ``cohost`` or ``audience``
 2. **Avatar index** with 0 being the first slot of the particular role populated by a placeholder.
-3. **Animation identifier**. refer to the list later in this chapter of supported animations. Check [list](#list-of-animations) for valid input.
+3. **Animation identifier**. refer to the list later in this chapter of supported animations. Check list of animations below for valid input.
 
 ***
 
@@ -197,7 +204,7 @@ Removes a spawned avatar from the scene, leaving the slot free for another avata
 ***
 
 
-####  6.3.3. <a name='custom'></a>custom
+####  6.3.4. <a name='custom'></a>custom
 
 Passes a freeform event to the scene, which can be picked up from the Web Controller using an event dispatcher. 
 
@@ -251,7 +258,7 @@ The following is a complete list of the IDs of currently available animations:
 
 * There seems to be an incompatibility with some plugins, like the Megascan. As it now causes errors on compiling C++ plugin with the Megascan feature enabled.
 
-* Make sure you have the .Net ‘Developer’ version installed on the latest Visual Studio. .
+* Make sure you have the .Net ‘Developer’ version installed on the latest Visual Studio.
 
 ##  9. <a name='ImportantAdditionalInformation'></a>Important Additional Information
 
