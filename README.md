@@ -102,15 +102,16 @@ There is also a communications controller that is required for live control of t
 </figure>
 
 To load an avatar into the scene, drag AvatarPlaceholder from the content browser into the map.
-The placeholder can then be given a set of tags.
-The role tag gives an avatar a specific role in the environment.
-* ``role:host`` - Only one avatar can be a host
-* ``role:cohost``
-* ``role:guest`` - Guests are not spawned but rather promoted from the rows of audience
-* ``role:audience``
-These role tags are mutually exclusive.
+The placeholder exposes a number of options.
+The role option gives the avatar placeholdler a specific role in the environment:
+* ``host`` - Only one avatar can be a host
+* ``cohost`` - There can be an unlimited number of cohosts
+* ``guest`` - Guests are members of audience that have been temporarily promoted to be allowed to speak
+* ``audience``
 
-To specify a model and animation use the options presented in the details browser, but this should only be done for testing purposes, in production the models are all loaded under control of the web controller.
+Spawn order weight specifies the spawn order within the particular role. It's a floating point number and slots that are to be populated first should have the lowest weight. Multiple placeholders can have the same weight if they are to spawn in no particular order. The order will be consistent every time, not randomised.
+
+For testing purposes it is possible to specify a file name and initial animation to automatically spawn an avatar once the scene is playing, in production the models are all loaded under control of the web controller.
 
 
 <figure>
