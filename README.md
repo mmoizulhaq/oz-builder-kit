@@ -216,7 +216,7 @@ Refer to the previous chapter for information on the blueprint implementation.
 **Requires 1 argument** which is passed to the event handler.
 
 ##  7. <a name='Listofanimations'></a>List of animations
-The following is a complete list of the IDs of currently available animations: 
+The following is a complete list of the IDs of currently available built in animations, but it is also possible to pass animations by anim sequence reference to the Animate Direct function of the Avatar placeholder class.
 
 * hip_hop
 * super_excited
