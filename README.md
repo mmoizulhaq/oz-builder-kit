@@ -2,7 +2,7 @@
 
 <img alt="Unreal Engine" src="https://shields.io/badge/UnrealEngine-v4.26-blue"/>
 
-The OZ Builder Kit is an Unreal Engine 4 Plugin to create interactive experiences for creators and communities. 
+The OZ Builder Kit is an Unreal Engine 4 Plugin to create interactive experiences for creators and communities. Works with UE5, contact us for UE5 support, info@oz.com!
 
 ##  1. <a name='Content'></a>Content
 <!-- vscode-markdown-toc -->
